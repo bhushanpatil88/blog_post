@@ -1,0 +1,6 @@
+customhost = "bloguser.cxlnzixajhgw.ap-southeast-2.rds.amazonaws.com"
+customuser = "admin"
+custompass = "bhushan88"
+customdb = "user"
+custombucket = "bloguser"
+customregion = "ap-southeast-2"
