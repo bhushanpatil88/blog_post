@@ -9,14 +9,14 @@ app = Flask(__name__)
 bucket = custombucket
 region = customregion
 
-# db_conn = connections.Connection(
-#     host=customhost,
-#     port=3306,
-#     user=customuser,
-#     password=custompass,
-#     db=customdb
+db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
 
-# )
+)
 output = {}
 table = 'user'
 
@@ -36,15 +36,15 @@ def AddUser():
     user_image_file = request.files['user_image_file']
 
     insert_sql = "INSERT INTO user VALUES (%s, %s, %s, %s, %s)"
-    # cursor = db_conn.cursor()
+    cursor = db_conn.cursor()
 
     if user_image_file.filename == "":
         return "Please select a file"
 
     try:
 
-        # cursor.execute(insert_sql, (user_id, first_name, last_name, pri_skill, location))
-        # db_conn.commit()
+        cursor.execute(insert_sql, (user_id, first_name, last_name, pri_skill, location))
+        db_conn.commit()
         user_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
         user_image_file_name_in_s3 = "user-id-" + str(user_id) + "_image_file"
